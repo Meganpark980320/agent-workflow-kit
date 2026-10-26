@@ -2,14 +2,14 @@
 """데이터 분석 보고서 한 장(HTML): 요약표 + 숫자 열 히스토그램 + 범주 열 상위 막대 + (선택) 그룹별 비교.
 외부 라이브러리 없이 SVG로 그린다. 결론 문장은 사람이 채우도록 자리를 남긴다(근거 숫자는 표에 있음).
 사용:
-  python scripts/report.py data.csv -o report.html
-  python scripts/report.py data.csv --group line --value yield -o report.html   # 그룹별 평균·개수 비교
+  python3 scripts/report.py data.csv -o report.html
+  python3 scripts/report.py data.csv --group line --value yield -o report.html   # 그룹별 평균·개수 비교
 """
 import argparse, html, os, statistics, sys
 from collections import Counter, defaultdict
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from profile_data import load, num, mask  # noqa: E402
+from profile_data import PII_COL, load, num, mask  # noqa: E402
 
 W, H, PAD = 520, 180, 30
 
@@ -65,6 +65,9 @@ def main():
             labels, counts = hist(nums)
             charts.append(f"<h3>{html.escape(c)} 분포</h3>" + svg_bars(labels, counts, f"{c} 분포", "{:d}"))
         else:
+            if PII_COL.search(str(c)):
+                parts.append(f"<tr><td>{html.escape(c)}</td><td>글자</td><td>{miss}</td><td>{len(set(map(str, present)))}</td><td colspan=4>(사람 정보 열이라 값을 싣지 않음)</td></tr>")
+                continue
             top = Counter(mask(v) for v in present).most_common(10)
             parts.append(f"<tr><td>{html.escape(c)}</td><td>글자</td><td>{miss}</td><td>{len(set(map(str, present)))}</td><td colspan=4>{html.escape(', '.join(f'{k}({n})' for k, n in top[:5]))}</td></tr>")
             if 1 < len(top) and len(set(map(str, present))) <= 50:

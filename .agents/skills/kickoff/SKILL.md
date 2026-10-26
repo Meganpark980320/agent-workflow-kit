@@ -5,7 +5,7 @@ description: 과제를 처음 받았을 때 — 안내문을 읽고 요구사항
 
 # 시작 (15분 안에 끝낸다)
 
-1. `README.md`·과제 안내·제공 파일 목록을 읽는다. 제공 데이터는 `python scripts/profile_data.py <파일>`로 훑는다.
+1. `README.md`·과제 안내·제공 파일 목록을 읽는다. 제공 데이터는 `python3 scripts/profile_data.py <파일>`로 훑는다.
 2. `docs/REQUIREMENTS.md`를 채운다.
    - 요구사항마다 `R1, R2…` 번호와 출처(README 몇 줄, 담당자 답 등)를 단다.
    - 필수 제출물(파일명·위치·형식)과 제약을 옮겨 적는다. 글자 그대로 옮긴다.

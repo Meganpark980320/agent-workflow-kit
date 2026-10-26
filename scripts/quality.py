@@ -7,10 +7,10 @@
 
 출력은 마크다운 표(터미널) + 선택적 SVG(--svg 파일). 결론은 사람이 판단한다.
 사용 예:
-  python scripts/quality.py pareto defects.csv --cat defect_type [--weight count]
-  python scripts/quality.py yield lots.csv --group line --good good --total total
-  python scripts/quality.py yield units.csv --group tool --pass result --pass-value PASS
-  python scripts/quality.py spc measure.csv --value thickness [--order time] --svg spc.svg
+  python3 scripts/quality.py pareto defects.csv --cat defect_type [--weight count]
+  python3 scripts/quality.py yield lots.csv --group line --good good --total total
+  python3 scripts/quality.py yield units.csv --group tool --pass result --pass-value PASS
+  python3 scripts/quality.py spc measure.csv --value thickness [--order time] --svg spc.svg
 """
 import argparse, math, os, sys
 from collections import defaultdict

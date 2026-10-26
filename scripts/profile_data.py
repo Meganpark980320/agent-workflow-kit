@@ -2,12 +2,14 @@
 """데이터 파일 한눈에 보기: 행·열 수, 열마다 타입·결측·고유값·최소/최대/평균·이상치(IQR) 수, 예시 값.
 CSV/TSV/JSON(배열)/JSONL/XLSX(pandas 있으면). pandas가 없어도 CSV·JSON은 표준 라이브러리로 동작한다.
 개인정보처럼 보이는 열(이메일·전화·주민번호 형태)은 예시 값을 가린다.
-사용: python scripts/profile_data.py data.csv [더 많은 파일...]
+사용: python3 scripts/profile_data.py data.csv [더 많은 파일...]
 """
 import csv, json, math, re, statistics, sys
 from collections import Counter
 
 PII = [re.compile(p) for p in (r"[\w.+-]+@[\w-]+\.[\w.]+", r"\b01[016789]-?\d{3,4}-?\d{4}\b", r"\b\d{6}-?[1-4]\d{6}\b")]
+# 열 이름만 봐도 사람 정보인 열: 예시 값을 통째로 가린다
+PII_COL = re.compile(r"(name|operator|user|employee|worker|owner|email|e-mail|phone|mobile|tel|address|ssn|resident|account|이름|성명|작업자|담당자|사원|직원|사용자|연락처|전화|휴대|이메일|주소|주민|계좌)", re.I)
 
 def mask(v):
     s = str(v)
@@ -59,7 +61,7 @@ def profile(path):
         nums = [n for n in (num(v) for v in present) if n is not None]
         is_num = present and len(nums) >= 0.9 * len(present)
         uniq = len(set(map(str, present)))
-        ex = ", ".join(mask(v) for v, _ in Counter(map(str, present)).most_common(3))
+        ex = "<가림: 사람 정보 열>" if PII_COL.search(str(c)) else ", ".join(mask(v) for v, _ in Counter(map(str, present)).most_common(3))
         if is_num and nums:
             q = statistics.quantiles(nums, n=4) if len(nums) >= 4 else [min(nums), statistics.median(nums), max(nums)]
             iqr = q[2] - q[0]

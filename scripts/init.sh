@@ -10,5 +10,6 @@ copy "$KIT/AGENTS.md" "$WS/AGENTS.md"
 for f in REQUIREMENTS QUESTIONS PLAN DECISIONS VERIFY REPORT BRIEF; do copy "$KIT/templates/$f.md" "$WS/docs/$f.md"; done
 for f in profile_data.py trace_check.py report.py quality.py; do copy "$KIT/scripts/$f" "$WS/scripts/$f"; done
 for d in "$KIT"/.agents/skills/*/; do n=$(basename "$d"); mkdir -p "$WS/.agents/skills/$n"; copy "$d/SKILL.md" "$WS/.agents/skills/$n/SKILL.md"; done
+[ -e "$WS/.gitignore" ] || printf '__pycache__/\n*.pyc\nnode_modules/\n.venv/\n.env\n' > "$WS/.gitignore"
 if [ ! -d "$WS/.git" ]; then git -C "$WS" init -q && echo "git 저장소 만듦"; fi
 echo "완료. 코딩 에이전트를 이 폴더에서 다시 시작하면 AGENTS.md를 읽는다."

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """요구사항 추적 확인: docs/REQUIREMENTS.md의 R번호가 docs/VERIFY.md에 판정과 함께 있는지,
 테스트 코드나 커밋 메시지에서 언급되는지 본다. 빠진 것을 목록으로 보여 준다.
-사용: python scripts/trace_check.py [작업 공간 경로]
+사용: python3 scripts/trace_check.py [작업 공간 경로]
 """
 import os, re, subprocess, sys
 
