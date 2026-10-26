@@ -35,3 +35,8 @@ for r in req:
         missing += 1
     print(f"| {r} | {'O' if row else 'X'} | {verdict} | {t} | {c} |")
 print(f"\n요구사항 {len(req)}개 중 통과 {len(req) - missing}개." + (" 남은 것을 먼저 닫아라." if missing else " 전부 통과."))
+# 마무리 문서가 틀 그대로인지
+for doc, mark in (("docs/REPORT.md", "## 무엇을 만들었나\n- \n"), ("docs/BRIEF.md", "1. \n2. ")):
+    body = rd(doc)
+    if not body or mark in body:
+        print(f"아직 비어 있음: {doc} — wrap-up에서 채울 것")
