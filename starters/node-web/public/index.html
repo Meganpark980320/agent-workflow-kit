@@ -1,0 +1,11 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>앱</title>
+<style>body{font-family:system-ui,sans-serif;max-width:720px;margin:32px auto;padding:0 16px}input,button{font-size:16px;padding:8px}li{padding:4px 0}</style>
+<h1>앱</h1>
+<form id="f"><input id="t" placeholder="입력" required> <button>추가</button></form>
+<ul id="l"></ul>
+<script>
+const load = async () => { const r = await fetch('/api/items'); const items = await r.json(); l.innerHTML = items.map(i => `<li>${i.text.replace(/</g, '&lt;')}</li>`).join('') }
+f.onsubmit = async (e) => { e.preventDefault(); await fetch('/api/items', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ text: t.value }) }); t.value = ''; load() }
+load()
+</script></html>
