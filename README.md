@@ -16,6 +16,7 @@ codex                                          # 작업 공간에서 에이전�
 | 경로 | 내용 |
 |---|---|
 | `AGENTS.md` | 에이전트 작업 규율: 요구사항 번호 붙이기, 질문 모으기, 작은 단계·검증·커밋, 결정 기록, 보안·윤리, 웹 서버 0.0.0.0, 토큰 절약, 마무리 체크 |
+| `OWNER_CHECKLIST.md` | 위 원칙의 요약판(에이전트가 한 번 읽고 쓰는 것 — 토큰 절약) |
 | `OWNER_PRINCIPLES.md` | 주인의 판단 원칙 25개·물을 것/할 것·보고 방식·완료 전 체크리스트 (에이전트가 스스로 적용) |
 | `templates/` | `REQUIREMENTS` `QUESTIONS` `PLAN` `DECISIONS` `VERIFY` `REPORT` `BRIEF` 문서 틀 (init.sh가 `docs/`로 복사) |
 | `scripts/profile_data.py` | CSV/JSON/JSONL/XLSX 한눈에 보기: 타입·결측·고유값·범위·IQR 이상치·중복, 개인정보처럼 보이는 값은 가림 |

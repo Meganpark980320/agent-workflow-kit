@@ -8,6 +8,7 @@ mkdir -p "$WS/docs" "$WS/scripts"
 copy() { if [ -e "$2" ]; then echo "건너뜀(이미 있음): $2"; else cp "$1" "$2"; echo "만듦: $2"; fi; }
 copy "$KIT/AGENTS.md" "$WS/AGENTS.md"
 copy "$KIT/OWNER_PRINCIPLES.md" "$WS/OWNER_PRINCIPLES.md"
+copy "$KIT/OWNER_CHECKLIST.md" "$WS/OWNER_CHECKLIST.md"
 for f in REQUIREMENTS QUESTIONS PLAN DECISIONS VERIFY REPORT BRIEF; do copy "$KIT/templates/$f.md" "$WS/docs/$f.md"; done
 for f in profile_data.py trace_check.py report.py quality.py; do copy "$KIT/scripts/$f" "$WS/scripts/$f"; done
 for d in "$KIT"/.agents/skills/*/; do n=$(basename "$d"); mkdir -p "$WS/.agents/skills/$n"; copy "$d/SKILL.md" "$WS/.agents/skills/$n/SKILL.md"; done
