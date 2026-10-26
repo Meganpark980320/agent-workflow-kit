@@ -6,7 +6,7 @@
 ## 쓰는 법
 
 ```bash
-git clone https://github.com/<owner>/agent-workflow-kit.git
+git clone https://github.com/Meganpark980320/agent-workflow-kit.git
 bash agent-workflow-kit/scripts/init.sh .     # 현재 작업 공간에 AGENTS.md·docs/·scripts/를 깐다 (있는 파일은 덮어쓰지 않음)
 codex                                          # 작업 공간에서 에이전트를 시작하면 AGENTS.md를 읽는다
 ```
