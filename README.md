@@ -19,6 +19,10 @@ codex                                          # 작업 공간에서 에이전�
 | `templates/` | `REQUIREMENTS` `QUESTIONS` `PLAN` `DECISIONS` `VERIFY` `REPORT` `BRIEF` 문서 틀 (init.sh가 `docs/`로 복사) |
 | `scripts/profile_data.py` | CSV/JSON/JSONL/XLSX 한눈에 보기: 타입·결측·고유값·범위·IQR 이상치·중복, 개인정보처럼 보이는 값은 가림 |
 | `scripts/trace_check.py` | 요구사항(R번호)이 검증표·테스트·커밋에 연결됐는지 확인 |
+| `.agents/skills/` | Codex 스킬 5개: kickoff(시작) · close-step(단계 닫기) · data-analysis · web-service · wrap-up(마무리). init.sh가 작업 공간에 복사 |
+| `scripts/report.py` | 데이터 → HTML 보고서 한 장(요약표·분포·그룹 비교, 외부 라이브러리 없이 SVG) |
+| `scripts/quality.py` | 파레토 · 그룹별 수율(95% 구간) · 관리도(I-MR, Western Electric 규칙) |
+| `ENV_CHECK.md` | 새 원격 IDE·에이전트 환경 15분 점검표 |
 | `starters/python-web` | 표준 라이브러리만 쓰는 최소 웹 서버(정적 + JSON API) + 실제 HTTP 테스트 |
 | `starters/node-web` | Node 표준 모듈만 쓰는 같은 구조의 서버 |
 
